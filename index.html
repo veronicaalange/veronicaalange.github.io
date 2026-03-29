@@ -537,6 +537,116 @@
       border-radius: 2px;
     }
 
+    /* ── WRITING ───────────────────────────────────────────── */
+    .writing { background: var(--navy); }
+
+    .writing-intro {
+      max-width: 620px;
+      font-size: 1rem;
+      color: var(--gray-lt);
+      line-height: 1.9;
+      margin-bottom: 3rem;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .article-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .article-card:hover {
+      border-color: rgba(201,168,76,0.35);
+      transform: translateY(-3px);
+    }
+
+    .article-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: var(--navy-lt);
+    }
+
+    .article-thumb-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--navy-lt) 0%, var(--navy-mid) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .article-thumb-placeholder span {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: rgba(201,168,76,0.2);
+    }
+
+    .article-body {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.5rem;
+    }
+
+    .article-date {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .article-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.35;
+    }
+
+    .article-excerpt {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .article-read {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-top: 0.5rem;
+    }
+
+    .articles-loading,
+    .articles-error,
+    .videos-loading,
+    .videos-error {
+      text-align: center;
+      padding: 3rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+      grid-column: 1 / -1;
+    }
+
+    .articles-error, .videos-error { color: var(--gold-dim); }
+
     /* ── YOUTUBE ───────────────────────────────────────────── */
     .youtube { background: var(--navy-mid); }
 
@@ -548,71 +658,116 @@
       margin-bottom: 3rem;
     }
 
-    .episodes-grid {
+    .videos-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
       margin-bottom: 2.5rem;
     }
 
-    .episode-card {
+    .video-card {
       background: var(--navy);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 4px;
-      padding: 1.6rem;
+      overflow: hidden;
       display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-      transition: border-color 0.2s;
+      flex-direction: column;
       text-decoration: none;
+      transition: border-color 0.25s, transform 0.25s;
     }
 
-    .episode-card:hover { border-color: rgba(201,168,76,0.3); }
+    .video-card:hover {
+      border-color: rgba(201,168,76,0.35);
+      transform: translateY(-3px);
+    }
 
-    .ep-number {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--gold-dim);
-      background: rgba(201,168,76,0.08);
-      border: 1px solid rgba(201,168,76,0.15);
-      width: 36px;
-      height: 36px;
-      border-radius: 2px;
+    .video-thumb-wrap {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--navy-lt);
+    }
+
+    .video-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .video-card:hover .video-thumb-wrap img { transform: scale(1.03); }
+
+    .video-play {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      background: rgba(13,27,42,0.35);
+      transition: background 0.2s;
     }
 
-    .ep-content {}
+    .video-card:hover .video-play { background: rgba(13,27,42,0.15); }
 
-    .ep-phase {
+    .video-play-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(201,168,76,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-play-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--navy);
+      margin-left: 3px;
+    }
+
+    .video-body {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1;
+    }
+
+    .video-date {
       font-family: var(--mono);
-      font-size: 0.6rem;
+      font-size: 0.62rem;
       color: var(--gold-dim);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 0.3rem;
     }
 
-    .ep-title {
+    .video-title {
       font-family: var(--serif);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--cream);
-      line-height: 1.3;
-      margin-bottom: 0.3rem;
+      line-height: 1.35;
     }
 
-    .ep-desc {
+    .video-desc {
       font-size: 0.78rem;
       color: var(--gray);
       line-height: 1.6;
     }
 
-    .youtube-cta {
-      text-align: center;
-      padding-top: 1rem;
+    .youtube-cta { text-align: center; }
+
+    /* ── RESPONSIVE: writing + youtube grids ───────────────── */
+    @media (max-width: 900px) {
+      .articles-grid { grid-template-columns: repeat(2, 1fr); }
+      .videos-grid   { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .articles-grid { grid-template-columns: 1fr; }
+      .videos-grid   { grid-template-columns: 1fr; }
     }
 
     /* ── SPEAKING ──────────────────────────────────────────── */
@@ -1057,6 +1212,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#coaching">Coaching</a></li>
+      <li><a href="#writing">Writing</a></li>
       <li><a href="#youtube">YouTube</a></li>
       <li><a href="#speaking">Speaking</a></li>
       <li><a href="#contact" class="nav-cta">Work With Me</a></li>
@@ -1070,6 +1226,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" class="mobile-nav-link">About</a>
     <a href="#coaching" class="mobile-nav-link">Coaching</a>
+    <a href="#writing" class="mobile-nav-link">Writing</a>
     <a href="#youtube" class="mobile-nav-link">YouTube</a>
     <a href="#speaking" class="mobile-nav-link">Speaking</a>
     <a href="#contact" class="mobile-nav-link mobile-cta">Work With Me</a>
@@ -1274,65 +1431,38 @@
     </div>
   </section>
 
+  <!-- ── WRITING ──────────────────────────────────────────── -->
+  <section class="writing" id="writing">
+    <div class="section-inner">
+      <div class="section-label">Writing</div>
+      <h2 class="section-heading">Ideas worth<br><em>putting down.</em></h2>
+
+      <p class="writing-intro">
+        Articles on engineering leadership, career transitions, platform culture, and the hard lessons that don't fit in a slide deck. Published on LinkedIn — written for practitioners, not theorists.
+      </p>
+
+      <div class="articles-grid" id="articlesGrid">
+        <div class="articles-loading">Loading articles...</div>
+      </div>
+
+      <div style="text-align:center">
+        <a href="https://www.linkedin.com/in/veronicaalange/recent-activity/articles/" target="_blank" rel="noopener" class="btn-secondary">Read All Articles on LinkedIn →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ── YOUTUBE ───────────────────────────────────────────── -->
   <section class="youtube" id="youtube">
     <div class="section-inner">
       <div class="section-label">YouTube Channel</div>
-      <h2 class="section-heading">10 weeks. 10 episodes.<br><em>One honest arc.</em></h2>
+      <h2 class="section-heading">Real stories.<br><em>Real frameworks.</em></h2>
 
       <p class="youtube-intro">
-        A channel for tech professionals navigating career transitions — built around real stories, real frameworks, and the kind of leadership content you won't find anywhere else. New episode every week.
+        A weekly channel for tech professionals navigating career transitions — built around the kind of leadership content you won't find anywhere else. New episode every week.
       </p>
 
-      <div class="episodes-grid">
-        <a href="https://youtube.com/@veronicaalange" class="episode-card" target="_blank" rel="noopener">
-          <div class="ep-number">01</div>
-          <div class="ep-content">
-            <div class="ep-phase">Phase 1 · Personal Brand</div>
-            <div class="ep-title">"I didn't chase the title"</div>
-            <div class="ep-desc">The origin story. Full stack engineer → SRE → the person everyone looked to → why I finally said yes.</div>
-          </div>
-        </a>
-        <a href="https://youtube.com/@veronicaalange" class="episode-card" target="_blank" rel="noopener">
-          <div class="ep-number">02</div>
-          <div class="ep-content">
-            <div class="ep-phase">Phase 1 · Personal Brand</div>
-            <div class="ep-title">"Leadership is a two-way street"</div>
-            <div class="ep-desc">The trust philosophy. Why engineer input is information, not just feedback. Eyes on the ground.</div>
-          </div>
-        </a>
-        <a href="https://youtube.com/@veronicaalange" class="episode-card" target="_blank" rel="noopener">
-          <div class="ep-number">03</div>
-          <div class="ep-content">
-            <div class="ep-phase">Phase 2 · Operational Credibility</div>
-            <div class="ep-title">"The situation room"</div>
-            <div class="ep-desc">Incident leadership from the manager's chair. Never miss a situation room. The debrief framework.</div>
-          </div>
-        </a>
-        <a href="https://youtube.com/@veronicaalange" class="episode-card" target="_blank" rel="noopener">
-          <div class="ep-number">04</div>
-          <div class="ep-content">
-            <div class="ep-phase">Phase 2 · Operational Credibility</div>
-            <div class="ep-title">"Eyes on the ground"</div>
-            <div class="ep-desc">Leading teams you can't micromanage. Building upward information flow. Reading engineer silence.</div>
-          </div>
-        </a>
-        <a href="https://youtube.com/@veronicaalange" class="episode-card" target="_blank" rel="noopener">
-          <div class="ep-number">05</div>
-          <div class="ep-content">
-            <div class="ep-phase">Phase 3 · Technical Depth</div>
-            <div class="ep-title">"FinOps isn't a dashboard"</div>
-            <div class="ep-desc">Cloud cost as a values exercise. The student dollar framework. How mission context changes decisions.</div>
-          </div>
-        </a>
-        <a href="https://youtube.com/@veronicaalange" class="episode-card" target="_blank" rel="noopener">
-          <div class="ep-number">10</div>
-          <div class="ep-content">
-            <div class="ep-phase">Phase 4 · Thought Leadership</div>
-            <div class="ep-title">"The student dollar"</div>
-            <div class="ep-desc">Purpose-driven engineering leadership. How mission context transforms platform work from abstract to meaningful.</div>
-          </div>
-        </a>
+      <div class="videos-grid" id="videosGrid">
+        <div class="videos-loading">Loading videos...</div>
       </div>
 
       <div class="youtube-cta">
@@ -1435,8 +1565,14 @@
   </footer>
 
   <script>
+    // ═══════════════════════════════════════════════════════
+    // CONFIGURATION — update these two values when ready
+    // ═══════════════════════════════════════════════════════
+    const YT_API_KEY    = 'YOUR_YOUTUBE_API_KEY';   // From Google Cloud Console
+    const YT_CHANNEL_ID = 'YOUR_CHANNEL_ID';         // From YouTube Studio → Settings → Channel → Advanced
+
     // ── Mobile menu ─────────────────────────────────────────
-    const hamburger = document.getElementById('hamburger');
+    const hamburger  = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
     hamburger.addEventListener('click', () => {
@@ -1455,31 +1591,159 @@
 
     // ── Nav shrink on scroll ─────────────────────────────────
     window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
+      const nav      = document.querySelector('nav');
       const isMobile = window.innerWidth <= 900;
-      if (window.scrollY > 60) {
-        nav.style.padding = isMobile ? '0.7rem 1.5rem' : '0.8rem 4rem';
-      } else {
-        nav.style.padding = isMobile ? '1rem 1.5rem' : '1.2rem 4rem';
-      }
+      nav.style.padding = window.scrollY > 60
+        ? (isMobile ? '0.7rem 1.5rem' : '0.8rem 4rem')
+        : (isMobile ? '1rem 1.5rem'   : '1.2rem 4rem');
     });
 
     // ── Scroll-triggered fade-in ─────────────────────────────
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity   = '1';
+          e.target.style.transform = 'translateY(0)';
         }
       });
     }, { threshold: 0.08 });
 
-    document.querySelectorAll('.phil-card, .offer-card, .episode-card, .topic-item, .metric-card').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
+    function observeCards() {
+      document.querySelectorAll(
+        '.phil-card, .offer-card, .topic-item, .metric-card, .article-card, .video-card'
+      ).forEach(el => {
+        el.style.opacity   = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+    }
+
+    // ── Helpers ──────────────────────────────────────────────
+    function formatDate(iso) {
+      return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    // ── LinkedIn Articles (from content.json) ────────────────
+    async function loadArticles() {
+      const grid = document.getElementById('articlesGrid');
+      try {
+        const res  = await fetch('content.json');
+        if (!res.ok) throw new Error('content.json not found');
+        const data = await res.json();
+        const articles = (data.articles || []).slice(0, 6);
+
+        if (!articles.length) {
+          grid.innerHTML = '<div class="articles-error">No articles yet — check back soon.</div>';
+          return;
+        }
+
+        grid.innerHTML = articles.map(a => `
+          <a href="${a.url}" target="_blank" rel="noopener" class="article-card">
+            ${a.image
+              ? `<img src="${a.image}" alt="${a.title}" class="article-thumb" loading="lazy">`
+              : `<div class="article-thumb-placeholder"><span>✍</span></div>`
+            }
+            <div class="article-body">
+              <div class="article-date">${formatDate(a.date)}</div>
+              <div class="article-title">${a.title}</div>
+              <div class="article-excerpt">${a.excerpt}</div>
+              <div class="article-read">Read on LinkedIn →</div>
+            </div>
+          </a>
+        `).join('');
+
+        observeCards();
+      } catch (err) {
+        grid.innerHTML = `
+          <div class="articles-error">
+            Articles coming soon.<br>
+            <small style="opacity:0.6;font-size:0.75rem;margin-top:0.5rem;display:block">
+              Add a content.json file to your repo to display articles here.
+            </small>
+          </div>`;
+      }
+    }
+
+    // ── YouTube Videos (live via API) ────────────────────────
+    async function loadVideos() {
+      const grid = document.getElementById('videosGrid');
+
+      if (YT_API_KEY === 'YOUR_YOUTUBE_API_KEY' || YT_CHANNEL_ID === 'YOUR_CHANNEL_ID') {
+        grid.innerHTML = `
+          <div class="videos-error">
+            YouTube feed coming soon.<br>
+            <small style="opacity:0.6;font-size:0.75rem;margin-top:0.5rem;display:block">
+              Add your API key and Channel ID to the script at the top of this file.
+            </small>
+          </div>`;
+        return;
+      }
+
+      try {
+        // Step 1: get uploads playlist ID from channel
+        const chanRes  = await fetch(
+          `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${YT_CHANNEL_ID}&key=${YT_API_KEY}`
+        );
+        const chanData = await chanRes.json();
+
+        if (chanData.error) throw new Error(chanData.error.message);
+
+        const uploadsId = chanData.items[0].contentDetails.relatedPlaylists.uploads;
+
+        // Step 2: get latest 6 videos from uploads playlist
+        const vidRes  = await fetch(
+          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=6&playlistId=${uploadsId}&key=${YT_API_KEY}`
+        );
+        const vidData = await vidRes.json();
+
+        if (vidData.error) throw new Error(vidData.error.message);
+
+        const items = vidData.items || [];
+        if (!items.length) {
+          grid.innerHTML = '<div class="videos-error">No videos yet — check back soon.</div>';
+          return;
+        }
+
+        grid.innerHTML = items.map(item => {
+          const s       = item.snippet;
+          const videoId = s.resourceId.videoId;
+          const thumb   = s.thumbnails?.maxres?.url
+                       || s.thumbnails?.high?.url
+                       || s.thumbnails?.medium?.url
+                       || '';
+          const desc    = s.description.length > 120
+                        ? s.description.slice(0, 117) + '...'
+                        : s.description;
+          return `
+            <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener" class="video-card">
+              <div class="video-thumb-wrap">
+                ${thumb ? `<img src="${thumb}" alt="${s.title}" loading="lazy">` : ''}
+                <div class="video-play">
+                  <div class="video-play-icon">
+                    <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="video-body">
+                <div class="video-date">${formatDate(s.publishedAt)}</div>
+                <div class="video-title">${s.title}</div>
+                <div class="video-desc">${desc}</div>
+              </div>
+            </a>`;
+        }).join('');
+
+        observeCards();
+      } catch (err) {
+        console.error('YouTube API error:', err);
+        grid.innerHTML = `<div class="videos-error">Could not load videos. Check your API key and Channel ID.</div>`;
+      }
+    }
+
+    // ── Init ─────────────────────────────────────────────────
+    observeCards();
+    loadArticles();
+    loadVideos();
   </script>
 
 </body>

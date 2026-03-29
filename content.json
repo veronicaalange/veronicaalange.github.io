@@ -1,0 +1,31 @@
+{
+  "_instructions": {
+    "how_to_add_an_article": "Copy one of the article objects below, paste it at the TOP of the articles array (newest first), and fill in your details. The site will automatically show the 6 most recent.",
+    "image": "Optional. Use the LinkedIn article cover image URL, or host an image in your assets/ folder and reference it as 'assets/your-image.jpg'. If omitted, a placeholder will show.",
+    "date": "Use ISO format: YYYY-MM-DD",
+    "url": "Paste the full LinkedIn article URL"
+  },
+  "articles": [
+    {
+      "title": "Your first article title goes here",
+      "date": "2026-04-01",
+      "excerpt": "A one or two sentence description of what this article is about. Keep it punchy — this is what convinces someone to click.",
+      "url": "https://www.linkedin.com/pulse/your-article-slug-veronica-lange/",
+      "image": ""
+    },
+    {
+      "title": "Leadership is a two-way street — and most managers miss the second half",
+      "date": "2026-03-15",
+      "excerpt": "Everyone talks about earning the trust of your engineers. Almost nobody talks about what it means to extend trust back — and why that's the harder, more important half of the equation.",
+      "url": "https://www.linkedin.com/in/veronicaalange/recent-activity/articles/",
+      "image": ""
+    },
+    {
+      "title": "Why I was in every incident situation room — even when I wasn't needed",
+      "date": "2026-03-01",
+      "excerpt": "I made a personal commitment early in my management career: no incident situation room involving my team happened without me present. Here's what that taught me about what leadership actually means under pressure.",
+      "url": "https://www.linkedin.com/in/veronicaalange/recent-activity/articles/",
+      "image": ""
+    }
+  ]
+}
