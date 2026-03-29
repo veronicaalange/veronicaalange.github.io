@@ -1,33 +1,31 @@
 {
   "_instructions": {
     "how_to_add_an_article": "Copy one of the article objects below, paste it at the TOP of the articles array (newest first), and fill in your details. The site will automatically show the 6 most recent.",
-    "image": "Optional. Use the LinkedIn article cover image URL, or host an image in your assets/ folder and reference it as 'assets/your-image.jpg'. If omitted, a placeholder will show.",
+    "images": "LinkedIn CDN URLs expire and block external requests — they will never load on an external site. Instead: save your article cover image to your computer, upload it to the assets/ folder in your GitHub repo, then reference it as 'assets/your-image-name.jpg'. If image is left empty, a styled VL placeholder shows instead.",
     "date": "Use ISO format: YYYY-MM-DD",
     "url": "Paste the full LinkedIn article URL",
-    "template": [
-      {
-        "title": "Why I was in every incident situation room — even when I wasn't needed",
-        "date": "2026-03-01",
-        "excerpt": "I made a personal commitment early in my management career: no incident situation room involving my team happened without me present. Here's what that taught me about what leadership actually means under pressure.",
-        "url": "https://www.linkedin.com/in/veronicaalange/recent-activity/articles/",
-        "image": ""
-      }
-    ]
+    "template": {
+      "title": "Your article title here",
+      "date": "2026-04-01",
+      "excerpt": "One or two punchy sentences about what this article covers.",
+      "url": "https://www.linkedin.com/pulse/your-article-slug/",
+      "image": "assets/your-image-name.jpg"
+    }
   },
   "articles": [
-    {
-      "title": "Building Dragons",
-      "date": "2024-11-20",
-      "excerpt": "Great leaders don't limit their teams to what's already known — they create space for innovation, ask the right questions, and build cultures where bold, scalable solutions can thrive.",
-      "url": "https://www.linkedin.com/pulse/building-dragons-veronica-lange-ycx1c/?trackingId=DQ9VE9anQVejxfIGKmS93A%3D%3D",
-      "image": "https://media.licdn.com/dms/image/v2/D5612AQFjJE0EaIg3dA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1732110881520?e=1776297600&v=beta&t=-RevAM-S9fSHW9PFn_zfP5nXbm5X_a1hCGygBFLbsic"
-    },
     {
       "title": "Stop Wasting Weeks on Hiring: The 3-Round, Back-to-Back 'Interview Sprint' Model",
       "date": "2025-12-02",
       "excerpt": "Streamline your hiring by running focused, back-to-back interview sprints — because great candidates deserve clarity, not weeks of silence.",
       "url": "https://www.linkedin.com/pulse/stop-wasting-weeks-hiring-3-round-back-to-back-interview-lange-hjptc/?trackingId=DQ9VE9anQVejxfIGKmS93A%3D%3D",
-      "image": "https://media.licdn.com/dms/image/v2/D5612AQHuI8uvvHcwWg/article-cover_image-shrink_720_1280/B56ZrgnnI3MEAM-/0/1764705078089?e=1776297600&v=beta&t=u-_KIli8glZBCBZIs6Q3FYgCYMKPxVoZPd62E0nm0CI"
+      "image": "assets/article-interview-sprint.jpg"
+    },
+    {
+      "title": "Building Dragons",
+      "date": "2024-11-20",
+      "excerpt": "Great leaders don't limit their teams to what's already known — they create space for innovation, ask the right questions, and build cultures where bold, scalable solutions can thrive.",
+      "url": "https://www.linkedin.com/pulse/building-dragons-veronica-lange-ycx1c/?trackingId=DQ9VE9anQVejxfIGKmS93A%3D%3D",
+      "image": "assets/article-building-dragons.jpg"
     }
   ]
 }
