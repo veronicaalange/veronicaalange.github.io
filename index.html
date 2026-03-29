@@ -322,13 +322,6 @@
     /* ── ABOUT ─────────────────────────────────────────────── */
     .about { background: var(--navy-mid); }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
     .about-body {
       font-size: 1rem;
       color: var(--gray-lt);
@@ -855,8 +848,6 @@
       .hero-actions .btn-primary,
       .hero-actions .btn-secondary { width: 100%; text-align: center; max-width: 300px; }
 
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-
       .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
       .metric-card { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.12); padding: 1.5rem 1rem; }
       .metric-card:nth-child(odd) { border-right: 1px solid rgba(201,168,76,0.12); }
@@ -912,12 +903,150 @@
       .footer-copy { font-size: 0.6rem; }
     }
 
-    /* ── LARGE SCREENS: > 1400px ───────────────────────────── */
-    @media (min-width: 1400px) {
-      .section-inner { max-width: 1240px; }
-      .hero-content { max-width: 900px; }
-      section { padding: 8rem 5rem; }
+    /* ── PHOTO ─────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 5rem;
+      align-items: start;
     }
+
+    .about-photo-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      position: sticky;
+      top: 7rem;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: 10px;
+      bottom: 10px;
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 4px;
+      z-index: 0;
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      left: 10px;
+      top: 10px;
+      background: rgba(201,168,76,0.06);
+      border-radius: 4px;
+      z-index: 0;
+    }
+
+    .photo-frame img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+      filter: contrast(1.02) brightness(0.97);
+    }
+
+    .photo-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .photo-role {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .photo-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .photo-link {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--gray);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding-bottom: 1px;
+    }
+
+    .photo-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* ── RESPONSIVE PHOTO ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-photo-col {
+        position: static;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .photo-frame {
+        max-width: 140px;
+        flex-shrink: 0;
+      }
+
+      .photo-frame::before,
+      .photo-frame::after { display: none; }
+
+      .photo-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-top: 0.5rem;
+      }
+
+      .photo-name { text-align: left; font-size: 1.3rem; }
+      .photo-role { text-align: left; }
+      .photo-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .about-photo-col {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .photo-frame { max-width: 200px; }
+      .photo-name { text-align: center; }
+      .photo-role { text-align: center; }
+      .photo-links { justify-content: center; }
+    }
+
   </style>
 </head>
 <body>
@@ -1006,39 +1135,60 @@
       <h2 class="section-heading">I didn't chase<br>the <em>title.</em></h2>
 
       <div class="about-grid">
-        <div class="about-body">
-          <p>
-            For most of my early career I was a <strong>full stack engineer</strong> with deep specialties in infrastructure, cloud, and DevOps culture — someone who built things, broke things intentionally to make them stronger, and cared as much about how software got delivered as how it was written.
-          </p>
-          <p>
-            What I kept noticing was that my teammates looked to me when decisions needed to be made, when a cross-functional conversation needed to happen, or when something had gone sideways and someone needed to stand in front of it. I wasn't chasing that role. Eventually the people around me made clear that formalizing it was the right step — and I accepted because the <strong>team already trusted me</strong>, not because I wanted the title.
-          </p>
-          <p>
-            At Western Governors University, I led platform engineering teams responsible for Tier 0 systems supporting 193,000 students and 8,000 staff across a multi-cloud environment — Azure owned identity and IaC, AWS ran the workloads. My teams lived at the seams between both platforms every day.
-          </p>
-          <p>
-            That experience shaped a leadership philosophy I now bring to every team I work with — and teach to every professional I coach.
-          </p>
+
+        <!-- Photo column -->
+        <div class="about-photo-col">
+          <div class="photo-frame">
+            <img src="assets/HeadShot.jpg" alt="Veronica Lange — Cloud Engineering Leader & Career Coach" loading="lazy">
+          </div>
+          <div class="photo-meta">
+            <div class="photo-name">Veronica Lange</div>
+            <div class="photo-role">Cloud Engineering Leader<br>Career Coach · Salt Lake City, UT</div>
+            <div class="photo-links">
+              <a href="https://linkedin.com/in/veronicaalange" target="_blank" rel="noopener" class="photo-link">LinkedIn</a>
+              <a href="https://youtube.com/@veronicaalange" target="_blank" rel="noopener" class="photo-link">YouTube</a>
+              <a href="mailto:langeveronica7@gmail.com" class="photo-link">Email</a>
+            </div>
+          </div>
         </div>
 
-        <div class="philosophy-cards">
-          <div class="phil-card">
-            <div class="phil-card-title">Leadership is a two-way street</div>
-            <div class="phil-card-body">Engineers need to trust my direction — and I need to earn their trust in return by treating their input as real information that guides decisions. They are my eyes on the ground.</div>
+        <!-- Story + philosophy -->
+        <div class="about-right">
+          <div class="about-body">
+            <p>
+              For most of my early career I was a <strong>full stack engineer</strong> with deep specialties in infrastructure, cloud, and DevOps culture — someone who built things, broke things intentionally to make them stronger, and cared as much about how software got delivered as how it was written.
+            </p>
+            <p>
+              What I kept noticing was that my teammates looked to me when decisions needed to be made, when a cross-functional conversation needed to happen, or when something had gone sideways and someone needed to stand in front of it. I wasn't chasing that role. Eventually the people around me made clear that formalizing it was the right step — and I accepted because the <strong>team already trusted me</strong>, not because I wanted the title.
+            </p>
+            <p>
+              At Western Governors University, I led platform engineering teams responsible for Tier 0 systems supporting 193,000 students and 8,000 staff across a multi-cloud environment — Azure owned identity and IaC, AWS ran the workloads. My teams lived at the seams between both platforms every day.
+            </p>
+            <p>
+              That experience shaped a leadership philosophy I now bring to every team I work with — and teach to every professional I coach.
+            </p>
           </div>
-          <div class="phil-card">
-            <div class="phil-card-title">Results belong to the team</div>
-            <div class="phil-card-body">My job is to provide clarity, standards, air cover, and the environment for engineers to do their best work. The outcomes are theirs.</div>
-          </div>
-          <div class="phil-card">
-            <div class="phil-card-title">Presence during incidents is non-negotiable</div>
-            <div class="phil-card-body">There was never a situation room involving my team that I wasn't present for — not to take over, but to support and remove blockers.</div>
-          </div>
-          <div class="phil-card">
-            <div class="phil-card-title">The platform serves the business</div>
-            <div class="phil-card-body">The platform serves the business. The team serves the platform. The business exists to serve someone counting on it. My job is to keep that chain visible and intact.</div>
+
+          <div class="philosophy-cards">
+            <div class="phil-card">
+              <div class="phil-card-title">Leadership is a two-way street</div>
+              <div class="phil-card-body">Engineers need to trust my direction — and I need to earn their trust in return by treating their input as real information that guides decisions. They are my eyes on the ground.</div>
+            </div>
+            <div class="phil-card">
+              <div class="phil-card-title">Results belong to the team</div>
+              <div class="phil-card-body">My job is to provide clarity, standards, air cover, and the environment for engineers to do their best work. The outcomes are theirs.</div>
+            </div>
+            <div class="phil-card">
+              <div class="phil-card-title">Presence during incidents is non-negotiable</div>
+              <div class="phil-card-body">There was never a situation room involving my team that I wasn't present for — not to take over, but to support and remove blockers.</div>
+            </div>
+            <div class="phil-card">
+              <div class="phil-card-title">The platform serves the business</div>
+              <div class="phil-card-body">The platform serves the business. The team serves the platform. The business exists to serve someone counting on it. My job is to keep that chain visible and intact.</div>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
