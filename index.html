@@ -775,19 +775,148 @@
     .delay-5 { animation-delay: 0.7s; }
     .delay-6 { animation-delay: 0.85s; }
 
-    /* ── RESPONSIVE ────────────────────────────────────────── */
+    /* ── MOBILE NAV ────────────────────────────────────────── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13,27,42,0.98);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      backdrop-filter: blur(16px);
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--cream);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a:active { color: var(--gold); }
+
+    .mobile-menu .mobile-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.9rem 2.5rem;
+      border-radius: 2px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── TABLET: 600–900px ─────────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
       section { padding: 5rem 1.5rem; }
-      .hero { padding: 7rem 1.5rem 5rem; }
+      .metrics-strip { padding: 3rem 1.5rem; }
+
+      .hero { padding: 7rem 1.5rem 5rem; min-height: auto; }
       .hero-metrics { display: none; }
+      .hero-name { font-size: clamp(3rem, 10vw, 5rem); }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-secondary { width: 100%; text-align: center; max-width: 300px; }
+
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-      .offers-grid { grid-template-columns: 1fr; }
+
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .metric-card { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.12); padding: 1.5rem 1rem; }
+      .metric-card:nth-child(odd) { border-right: 1px solid rgba(201,168,76,0.12); }
+      .metric-card:last-child { border-bottom: none; }
+
+      .offers-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
       .episodes-grid { grid-template-columns: 1fr; }
       .speaking-grid { grid-template-columns: 1fr; gap: 3rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
+
+      .contact-links { flex-direction: column; align-items: center; gap: 1.5rem; }
+      .contact-actions { flex-direction: column; align-items: center; }
+      .contact-actions .btn-primary,
+      .contact-actions .btn-secondary { width: 100%; text-align: center; max-width: 320px; }
+
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+
+    /* ── MOBILE: < 480px ───────────────────────────────────── */
+    @media (max-width: 480px) {
+      nav { padding: 0.9rem 1.2rem; }
+      section { padding: 4rem 1.2rem; }
+      .metrics-strip { padding: 2.5rem 1.2rem; }
+
+      .hero { padding: 6rem 1.2rem 4rem; }
+      .hero-eyebrow { font-size: 0.65rem; }
+      .hero-name { font-size: clamp(2.6rem, 12vw, 3.5rem); }
+      .hero-statement { font-size: 1rem; padding-left: 1rem; }
+      .hero-badges { gap: 0.5rem; }
+      .badge { font-size: 0.62rem; padding: 0.3rem 0.7rem; }
+
+      .section-heading { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+      .section-label { font-size: 0.65rem; }
+
+      .metrics-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+      .metric-card .metric-value { font-size: 1.8rem; }
+      .metric-card .metric-label { font-size: 0.65rem; }
+
+      .offer-card { padding: 1.8rem 1.4rem; }
+      .offer-price { font-size: 1.7rem; }
+      .offers-grid { max-width: 100%; }
+
+      .episode-card { flex-direction: column; gap: 0.8rem; }
+      .ep-number { width: 32px; height: 32px; font-size: 0.6rem; }
+
+      .mobile-menu a { font-size: 1.6rem; }
+      .mobile-menu { gap: 2rem; }
+
+      .topic-item { padding: 1rem 1.1rem; }
+      .phil-card { padding: 1.1rem 1.2rem; }
+
+      footer { padding: 1.8rem 1.2rem; }
+      .footer-name { font-size: 0.85rem; }
+      .footer-copy { font-size: 0.6rem; }
+    }
+
+    /* ── LARGE SCREENS: > 1400px ───────────────────────────── */
+    @media (min-width: 1400px) {
+      .section-inner { max-width: 1240px; }
+      .hero-content { max-width: 900px; }
+      section { padding: 8rem 5rem; }
     }
   </style>
 </head>
@@ -803,7 +932,19 @@
       <li><a href="#speaking">Speaking</a></li>
       <li><a href="#contact" class="nav-cta">Work With Me</a></li>
     </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- ── MOBILE MENU ──────────────────────────────────────── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#coaching" class="mobile-nav-link">Coaching</a>
+    <a href="#youtube" class="mobile-nav-link">YouTube</a>
+    <a href="#speaking" class="mobile-nav-link">Speaking</a>
+    <a href="#contact" class="mobile-nav-link mobile-cta">Work With Me</a>
+  </div>
 
   <!-- ── HERO ────────────────────────────────────────────── -->
   <section class="hero" id="home">
@@ -1144,7 +1285,36 @@
   </footer>
 
   <script>
-    // Scroll-triggered fade-in for sections
+    // ── Mobile menu ─────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ── Nav shrink on scroll ─────────────────────────────────
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      const isMobile = window.innerWidth <= 900;
+      if (window.scrollY > 60) {
+        nav.style.padding = isMobile ? '0.7rem 1.5rem' : '0.8rem 4rem';
+      } else {
+        nav.style.padding = isMobile ? '1rem 1.5rem' : '1.2rem 4rem';
+      }
+    });
+
+    // ── Scroll-triggered fade-in ─────────────────────────────
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1152,23 +1322,13 @@
           entry.target.style.transform = 'translateY(0)';
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
 
     document.querySelectorAll('.phil-card, .offer-card, .episode-card, .topic-item, .metric-card').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(el);
-    });
-
-    // Nav shrink on scroll
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      if (window.scrollY > 60) {
-        nav.style.padding = '0.8rem 4rem';
-      } else {
-        nav.style.padding = '1.2rem 4rem';
-      }
     });
   </script>
 
